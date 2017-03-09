@@ -12,7 +12,7 @@ import java.sql.SQLException;
  */
 public class BDConfig {
 	
-	private static String url = "jdbc:postgresql://pgres-sigo.c3xuf7uapyec.us-east-1.rds.amazonaws.com:5433/sigo";  
+	private static String url = "jdbc:postgresql://pgres-sigo.c3xuf7uapyec.us-east-1.rds.amazonaws.com:5432/sigo";  
     static String usuario = "sigodb";
     static String senha = "sigoUndb2017";
 		
