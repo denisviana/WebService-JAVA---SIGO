@@ -12,9 +12,9 @@ import java.sql.SQLException;
  */
 public class BDConfig {
 	
-	private static String url = "jdbc:postgresql://pgres-sigo.c3xuf7uapyec.us-east-1.rds.amazonaws.com:5432/sigo";  
-    static String usuario = "sigodb";
-    static String senha = "sigoUndb2017";
+	private static String url = "jdbc:postgresql://localhost:5432/db";  
+    static String usuario = "user";
+    static String senha = "user";
 		
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName("org.postgresql.Driver");
