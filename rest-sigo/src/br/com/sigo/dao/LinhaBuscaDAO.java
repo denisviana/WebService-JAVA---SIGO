@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.sigo.config.BDConfig;
 import br.com.sigo.entidade.Linha;
 import br.com.sigo.entidade.LinhaBusca;
+import br.com.sigo.entidade.Parada;
 
 public class LinhaBuscaDAO {
 	
@@ -71,6 +72,37 @@ public class LinhaBuscaDAO {
 		}
 		
 		return linha;
+		
+	}
+	
+	public List<Parada> carregaItinerario(int idItinerario) throws SQLException{
+		
+		List<Parada> paradas = new ArrayList<>();
+		
+		Connection conexao = null;
+		try {
+			conexao = BDConfig.getConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String sql = "SELECT nome_parada FROM \"view_itinerario\" WHERE itinerario_id_itinerario = ?";
+		
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		statement.setInt(1, idItinerario);
+		ResultSet resultSet = statement.executeQuery();
+		
+		while(resultSet.next()){ //*Enquanto houver um próximo registro...
+			Parada parada = new Parada();
+			parada.setNome_parada(resultSet.getString("nome_parada"));
+			paradas.add(parada);
+		}
+		
+		return paradas;
 		
 	}
 

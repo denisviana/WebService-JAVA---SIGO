@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import br.com.sigo.dao.LinhaBuscaDAO;
 import br.com.sigo.entidade.Linha;
 import br.com.sigo.entidade.LinhaBusca;
+import br.com.sigo.entidade.Parada;
 
 
 
@@ -82,6 +83,23 @@ public class LinhasBuscaService {
 		
 		return linha;
 		
+	}
+	
+	@GET
+	@Path("/itinerario/{idItinerario}")
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Parada> carregaItinerario(@PathParam("idItinerario") int idItinerario){
+		
+		List<Parada> itinerario = null;
+		
+		try{
+			itinerario = linhaBuscaDAO.carregaItinerario(idItinerario);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return itinerario;
 	}
 	
 	
